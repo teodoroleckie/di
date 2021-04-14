@@ -37,7 +37,7 @@ return [
     'chainValue' => 'stringValue',
     'closureValue' => static function () {
         // returns a new instance on each call
-        return new B('String Argument');
+        return new Project\Adapter\B('String Argument');
     },
     'arrayValue' => [
         [
@@ -51,11 +51,11 @@ return [
     ],
     // lazy loading and apply singleton
     'lazyFactoryWithConstructArguments' => [
-        'className' => A::class,
+        'className' => Project\Adapter\A::class,
         'arguments' => ['stringValue', 'closureValue']
     ],
     'lazyFactoryWithConstructArgumentsAndCallMethodWithArguments' => [
-        'className' => A::class,
+        'className' => Project\Adapter\A::class,
         'arguments' => ['stringValue', 'closureValue'],
         'methods' => [
             [
