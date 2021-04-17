@@ -19,8 +19,8 @@ $container->get('closureValue'); // same instance
 $container->get('closureValue'); // same instance
 $container->get('closureValue'); // same instance
 $container->get('arrayValue');
-$container->get('lazyFactoryWithConstructArguments');
-$container->get('lazyFactoryWithConstructArgumentsAndCallMethodWithArguments');
+$container->get('lazyFactoryWithConstructArgumentsAnReturnSameInstance');
+$container->get('lazyFactoryWithConstructArgumentsAndCallMethodWithArgumentsAndCreateANewInstance');
 
 ```
 
