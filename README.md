@@ -15,9 +15,9 @@ $container->get('stringValue');
 $container->get('numericValue');
 $container->get('chainValue');
 $container->get('closureValue'); 
-$container->get('closureValue'); // new instance
-$container->get('closureValue'); // new instance
-$container->get('closureValue'); // new instance
+$container->get('closureValue'); // same instance
+$container->get('closureValue'); // same instance
+$container->get('closureValue'); // same instance
 $container->get('arrayValue');
 $container->get('lazyFactoryWithConstructArguments');
 $container->get('lazyFactoryWithConstructArgumentsAndCallMethodWithArguments');
