@@ -1,13 +1,14 @@
 ### Initialization:
+
 ```php
 <?php
 
 require "../vendor/autoload.php";
 
-use Tleckie\Di\Container;
+use Tleckie\Di\Di;
 use Tleckie\Di\Definition\Adapter\FileAdapter;
 
-$container = new Container();
+$container = new Di();
 $container->setAdapter(new FileAdapter('conf/definition.php', $container));
 
 $container->get('stringValue');
@@ -36,8 +37,8 @@ return [
     'numericValue' => 55,
     'chainValue' => 'stringValue',
     'closureValue' => static function () {
-        // returns a new instance on each call
-        return new Project\Adapter\B('String Argument');
+        // each call returns the same instance
+        return new Project\B('String Argument');
     },
     'arrayValue' => [
         [
@@ -49,14 +50,16 @@ return [
             ]
         ]
     ],
-    // lazy loading and apply singleton
-    'lazyFactoryWithConstructArguments' => [
-        'className' => Project\Adapter\A::class,
-        'arguments' => ['stringValue', 'closureValue']
-    ],
-    'lazyFactoryWithConstructArgumentsAndCallMethodWithArguments' => [
-        'className' => Project\Adapter\A::class,
+    // lazy loading and singleton instance
+    'lazyFactoryWithConstructArgumentsAnReturnSameInstance' => [
+        'className' => Project\A::class,
         'arguments' => ['stringValue', 'closureValue'],
+        'newInstance' => false // each call returns the same instance
+    ],
+    'lazyFactoryWithConstructArgumentsAndCallMethodWithArgumentsAndCreateANewInstance' => [
+        'className' => Project\A::class,
+        'arguments' => ['stringValue', 'closureValue'],
+        'newInstance' => true, // each call returns a new instance
         'methods' => [
             [
                 'methodName' => 'setValue',

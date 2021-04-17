@@ -3,7 +3,7 @@
 namespace Tleckie\Di\Tests\Definition\Handler;
 
 use PHPUnit\Framework\TestCase;
-use Tleckie\Di\Container;
+use Tleckie\Di\Di;
 
 /**
  * Class AbstractTest
@@ -13,12 +13,12 @@ use Tleckie\Di\Container;
  */
 abstract class AbstractTest extends TestCase
 {
-    /** @var Container|MockObject */
-    protected Container|MockObject $diMock;
+    /** @var Di|MockObject */
+    protected Di|MockObject $diMock;
 
     public function setUp(): void
     {
-        $this->diMock = $this->createMock(Container::class);
+        $this->diMock = $this->createMock(Di::class);
     }
 }
 

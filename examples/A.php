@@ -12,7 +12,8 @@ class A
     /**
      * A constructor.
      *
-     * @param null $value
+     * @param $value
+     * @param $otherValue
      */
     public function __construct($value, $otherValue)
     {

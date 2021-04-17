@@ -22,7 +22,7 @@ class ClosureHandlerTest extends AbstractTest
         };
 
         $handler = new ClosureHandler($this->diMock);
-        static::assertEquals($closure, $handler->handle($closure));
+        static::assertEquals('return value', $handler->handle($closure));
         static::assertEquals(55.22, $handler->handle(55.22));
     }
 }

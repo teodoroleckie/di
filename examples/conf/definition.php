@@ -5,7 +5,7 @@ return [
     'numericValue' => 55,
     'chainValue' => 'stringValue',
     'closureValue' => static function () {
-        // returns a new instance on each call
+        // each call returns the same instance
         return new B('String Argument');
     },
     'arrayValue' => [
@@ -18,14 +18,16 @@ return [
             ]
         ]
     ],
-    // lazy loading and apply singleton
+    // lazy loading and singleton instance
     'lazyFactoryWithConstructArguments' => [
         'className' => A::class,
-        'arguments' => ['stringValue', 'closureValue']
+        'arguments' => ['stringValue', 'closureValue'],
+        'newInstance' => false // each call returns the same instance
     ],
     'lazyFactoryWithConstructArgumentsAndCallMethodWithArguments' => [
         'className' => A::class,
         'arguments' => ['stringValue', 'closureValue'],
+        'newInstance' => true, // each call returns a new instance
         'methods' => [
             [
                 'methodName' => 'setValue',

@@ -2,7 +2,6 @@
 
 namespace Tleckie\Di;
 
-use Closure;
 use Psr\Container\NotFoundExceptionInterface;
 use Tleckie\Di\Definition\Adapter\AdapterInterface;
 use Tleckie\Di\Definition\Definition;
@@ -15,12 +14,12 @@ use Tleckie\Di\Definition\Handler\ObjectHandler;
 use Tleckie\Di\Definition\Handler\StringHandler;
 
 /**
- * Class Container
+ * Class Di
  *
  * @package Tleckie\Di
  * @author  Teodoro Leckie Westberg <teodoroleckie@gmail.com>
  */
-class Container implements DiInterface
+class Di implements DiInterface
 {
     /** @var array */
     private array $definitions = [];
@@ -32,7 +31,7 @@ class Container implements DiInterface
     private HandlerInterface|null $handler = null;
 
     /**
-     * Container constructor.
+     * Di constructor.
      */
     public function __construct()
     {
@@ -78,7 +77,6 @@ class Container implements DiInterface
         return $this;
     }
 
-
     /**
      * @param string $id
      * @return mixed
@@ -91,17 +89,14 @@ class Container implements DiInterface
         }
 
         if (!$this->has($id)) {
-            return $this->indexed[$id] = $id;
+            return $id;
         }
 
-        $value = $this->handler->handle($this->definitions[$id]);
-        if (!$value instanceof Closure) {
-            $this->indexed[$id] = $value;
-
-            return $value;
+        if ($this->newInstance($id)) {
+            return $this->handler->handle($this->definitions[$id]);
         }
 
-        return $value();
+        return $this->indexed[$id] = $this->handler->handle($this->definitions[$id]);
     }
 
     /**
@@ -111,5 +106,16 @@ class Container implements DiInterface
     public function has(string $id): bool
     {
         return isset($this->definitions[$id]);
+    }
+
+    /**
+     * @param string $id
+     * @return bool
+     */
+    private function newInstance(string $id): bool
+    {
+        return is_array($this->definitions[$id])
+            && isset($this->definitions[$id]['newInstance'])
+            && true === $this->definitions[$id]['newInstance'];
     }
 }
