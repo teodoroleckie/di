@@ -1,6 +1,6 @@
 {
   "name": "tleckie/di",
-  "license": "LGPL-3.0-only",
+  "license": "MIT",
   "description": "Simple PSR-11 dependency injection container",
   "type": "library",
   "homepage": "https://github.com/teodoroleckie/di",

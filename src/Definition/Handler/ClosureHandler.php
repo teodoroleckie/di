@@ -3,6 +3,7 @@
 namespace Tleckie\Di\Definition\Handler;
 
 use Closure;
+
 /**
  * Class ClosureHandler
  *
@@ -23,5 +24,4 @@ class ClosureHandler extends Handler
 
         return parent::handle($value);
     }
-
 }
