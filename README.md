@@ -1,4 +1,4 @@
-### Initialization:
+### Di:
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/tleckie/di.svg?style=flat-square)](https://packagist.org/packages/tleckie/di)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/teodoroleckie/di/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/teodoroleckie/di/?branch=master)
