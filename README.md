@@ -4,6 +4,12 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/teodoroleckie/di/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/teodoroleckie/di/?branch=master)
 [![Total Downloads](https://img.shields.io/packagist/dt/tleckie/di.svg?style=flat-square)](https://packagist.org/packages/tleckie/di)
 
+You can install the package via composer:
+
+```bash
+composer require tleckie/di
+```
+
 
 ```php
 <?php
